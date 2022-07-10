@@ -31,12 +31,13 @@ class Window(FramelessWindow):
     def resizeEvent(self, e):
         # don't forget to call the resizeEvent() of super class
         super().resizeEvent(e)
-        length = min(self.width(), self.height() - 32)
+        length = min(self.width(), self.height())
         self.label.resize(length, length)
         self.label.move(
             self.width() // 2 - length // 2,
-            self.height() // 2 - length // 2 + 16
+            self.height() // 2 - length // 2
         )
+        self.label.lower()
 
 
 if __name__ == "__main__":

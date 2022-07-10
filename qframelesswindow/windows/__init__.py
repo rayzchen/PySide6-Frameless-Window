@@ -38,7 +38,7 @@ class WindowsFramelessWindow(QMainWindow):
         # solve issue #5
         self.windowHandle().screenChanged.connect(self.__onScreenChanged)
 
-        self.resize(500, 532)
+        self.resize(500, 500)
         self.titleBar.raise_()
 
     def menuBar(self):
@@ -60,6 +60,7 @@ class WindowsFramelessWindow(QMainWindow):
     def setWindowTitle(self, name):
         super().setWindowTitle(name)
         self.titleBar.label.setText(name)
+        self.titleBar.resize(self.width(), 32)
 
     def resizeEvent(self, e):
         super().resizeEvent(e)

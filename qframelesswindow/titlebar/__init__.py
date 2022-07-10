@@ -66,9 +66,9 @@ class TitleBarBase(QWidget):
 
         return super().eventFilter(obj, e)
 
-    def resizeEvent(self, event):
-        super().resizeEvent(event)
+    def paintEvent(self, event):
         self.label.move(self.width() // 2 - self.label.width() // 2, 0)
+        return super().paintEvent(event)
 
     def mouseDoubleClickEvent(self, event):
         """ Toggles the maximization state of the window """
