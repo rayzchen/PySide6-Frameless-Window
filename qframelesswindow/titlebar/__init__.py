@@ -2,8 +2,8 @@
 import sys
 
 from PySide6.QtCore import Qt, QEvent
-from PySide6.QtGui import QFont
-from PySide6.QtWidgets import QHBoxLayout, QWidget, QMenuBar, QLabel
+from PySide6.QtGui import QFont, QPainter
+from PySide6.QtWidgets import QHBoxLayout, QWidget, QMenuBar, QLabel, QStyleOption, QStyle
 
 if sys.platform == "win32":
     import win32con
@@ -69,7 +69,12 @@ class TitleBarBase(QWidget):
 
     def paintEvent(self, event):
         self.label.move(self.width() // 2 - self.label.width() // 2, 0)
-        return super().paintEvent(event)
+        super(TitleBarBase, self).paintEvent(event)
+        opt = QStyleOption()
+        opt.initFrom(self)
+        p = QPainter(self)
+        s = self.style()
+        s.drawPrimitive(QStyle.PE_Widget, opt, p, self)
 
     def mouseDoubleClickEvent(self, event):
         """ Toggles the maximization state of the window """
