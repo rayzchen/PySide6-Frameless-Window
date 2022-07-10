@@ -5,11 +5,10 @@ from ctypes.wintypes import DWORD, HWND, LPARAM, RECT, UINT
 import win32api
 import win32con
 import win32gui
-from PyQt5.QtCore import QOperatingSystemVersion
-from PyQt5.QtGui import QGuiApplication
-from PyQt5.QtWinExtras import QtWin
+from PySide6.QtCore import QOperatingSystemVersion
+from PySide6.QtGui import QGuiApplication
+# from PySide6.QtWinExtras import QtWin
 from win32comext.shell import shellcon
-
 
 def isMaximized(hWnd):
     """ Determine whether the window is maximized
@@ -89,7 +88,7 @@ def getResizeBorderThickness(hWnd):
     if result > 0:
         return result
 
-    thickness = 8 if QtWin.isCompositionEnabled() else 4
+    thickness = 8 # if QtWin.isCompositionEnabled() else 4
     return round(thickness*window.devicePixelRatio())
 
 
@@ -132,12 +131,12 @@ def isGreaterEqualWin8_1():
 
 class APPBARDATA(Structure):
     _fields_ = [
-        ('cbSize',            DWORD),
-        ('hWnd',              HWND),
-        ('uCallbackMessage',  UINT),
-        ('uEdge',             UINT),
-        ('rc',                RECT),
-        ('lParam',            LPARAM),
+        ("cbSize",            DWORD),
+        ("hWnd",              HWND),
+        ("uCallbackMessage",  UINT),
+        ("uEdge",             UINT),
+        ("rc",                RECT),
+        ("lParam",            LPARAM),
     ]
 
 
@@ -176,7 +175,7 @@ class Taskbar:
             if not monitorInfo:
                 return cls.NO_POSITION
 
-            monitor = RECT(*monitorInfo['Monitor'])
+            monitor = RECT(*monitorInfo["Monitor"])
             appbarData = APPBARDATA(sizeof(APPBARDATA), 0, 0, 0, monitor, 0)
             positions = [cls.LEFT, cls.TOP, cls.RIGHT, cls.BOTTOM]
             for position in positions:

@@ -64,7 +64,7 @@ class WindowsWindowEffect:
             return
 
         hWnd = int(hWnd)
-        gradientColor = ''.join(gradientColor[i:i+2] for i in range(6, -1, -2))
+        gradientColor = "".join(gradientColor[i:i+2] for i in range(6, -1, -2))
         gradientColor = DWORD(int(gradientColor, base=16))
         animationId = DWORD(animationId)
         accentFlags = DWORD(0x20 | 0x40 | 0x80 | 0x100) if enableShadow else DWORD(0)

@@ -1,28 +1,28 @@
 import setuptools
 
-
-with open('README.md', encoding='utf-8') as f:
+with open("README.md", encoding="utf-8") as f:
     long_description = f.read()
 
 setuptools.setup(
-    name="PyQt5-Frameless-Window",
+    name="PySide6-Frameless-Window",
     version="0.0.11",
-    keywords="pyqt frameless",
+    keywords="pyside6 frameless",
     author="Huang Zhengzhi",
     author_email="1319158137@qq.com",
-    description="A cross-platform frameless window based on pyqt5, support Win32, X11, Wayland and macOS.",
+    description="Based off PyQt5-Frameless-Window but migrated to PySide6.",
     long_description=long_description,
-    long_description_content_type='text/markdown',
+    long_description_content_type="text/markdown",
     license="MIT",
-    url="https://github.com/zhiyiYo/PyQt-Frameless-Window",
+    url="https://github.com/rayzchen/PySide6-Frameless-Window",
     packages=setuptools.find_packages(),
     install_requires=[
-        "pywin32;platform_system=='Windows'",
-        "xcffib;platform_system!='Windows'",
+        "PySide6",
+        "pywin32; platform_system == 'Windows'",
+        "xcffib; platform_system != 'Windows'",
     ],
     classifiers=[
-        'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent'
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent"
     ]
 )

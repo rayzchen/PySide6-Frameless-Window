@@ -1,7 +1,7 @@
 # coding:utf-8
-from PyQt5.QtCore import QPointF, QSize, Qt
-from PyQt5.QtGui import QColor, QIcon, QPainter, QPainterPath, QPen
-from PyQt5.QtWidgets import QToolButton
+from PySide6.QtCore import QPointF, QSize, Qt
+from PySide6.QtGui import QColor, QIcon, QPainter, QPainterPath, QPen
+from PySide6.QtWidgets import QToolButton
 
 from ..rc import resource
 
@@ -23,19 +23,19 @@ class TitleBarButton(QToolButton):
         super().__init__(parent=parent)
         self.setCursor(Qt.ArrowCursor)
         self.setFixedSize(46, 32)
-        self._state = 'normal'
+        self._state = "normal"
         self._style = {
             "normal": {
                 "color": (0, 0, 0, 255),
-                'background': (0, 0, 0, 0)
+                "background": (0, 0, 0, 0)
             },
             "hover": {
                 "color": (255, 255, 255),
-                'background': (0, 100, 182)
+                "background": (0, 100, 182)
             },
             "pressed": {
                 "color": (255, 255, 255),
-                'background': (54, 57, 65)
+                "background": (54, 57, 65)
             },
         }
         self.updateStyle(style)
@@ -70,8 +70,8 @@ class TitleBarButton(QToolButton):
         state: str
             the state of button, can be `normal`,`hover`, or `pressed`
         """
-        if state not in ('normal', 'hover', 'pressed'):
-            raise ValueError('The state can only be `normal`,`hover`, or `pressed`')
+        if state not in ("normal", "hover", "pressed"):
+            raise ValueError("The state can only be `normal`,`hover`, or `pressed`")
 
         self._state = state
         self.update()
@@ -100,13 +100,13 @@ class MinimizeButton(TitleBarButton):
 
         # draw background
         style = self._style[self._state]
-        painter.setBrush(QColor(*style['background']))
+        painter.setBrush(QColor(*style["background"]))
         painter.setPen(Qt.NoPen)
         painter.drawRect(self.rect())
 
         # draw icon
         painter.setBrush(Qt.NoBrush)
-        pen = QPen(QColor(*style['color']), 1)
+        pen = QPen(QColor(*style["color"]), 1)
         pen.setCosmetic(True)
         painter.setPen(pen)
         painter.drawLine(18, 16, 28, 16)
@@ -132,13 +132,13 @@ class MaximizeButton(TitleBarButton):
 
         # draw background
         style = self._style[self._state]
-        painter.setBrush(QColor(*style['background']))
+        painter.setBrush(QColor(*style["background"]))
         painter.setPen(Qt.NoPen)
         painter.drawRect(self.rect())
 
         # draw icon
         painter.setBrush(Qt.NoBrush)
-        pen = QPen(QColor(*style['color']), 1)
+        pen = QPen(QColor(*style["color"]), 1)
         pen.setCosmetic(True)
         painter.setPen(pen)
 
@@ -165,41 +165,41 @@ class CloseButton(TitleBarButton):
     def __init__(self, style=None, parent=None):
         defaultStyle = {
             "normal": {
-                'background': (0, 0, 0, 0),
+                "background": (0, 0, 0, 0),
                 "icon": ":/framelesswindow/close_black.svg"
             },
             "hover": {
-                'background': (232, 17, 35),
+                "background": (232, 17, 35),
                 "icon": ":/framelesswindow/close_white.svg"
             },
             "pressed": {
-                'background': (241, 112, 122),
+                "background": (241, 112, 122),
                 "icon": ":/framelesswindow/close_white.svg"
             },
         }
         super().__init__(defaultStyle, parent)
         self.updateStyle(style)
         self.setIconSize(QSize(46, 32))
-        self.setIcon(QIcon(self._style['normal']['icon']))
+        self.setIcon(QIcon(self._style["normal"]["icon"]))
 
     def updateStyle(self, style):
         super().updateStyle(style)
-        self.setIcon(QIcon(self._style[self._state]['icon']))
+        self.setIcon(QIcon(self._style[self._state]["icon"]))
 
     def enterEvent(self, e):
-        self.setIcon(QIcon(self._style['hover']['icon']))
+        self.setIcon(QIcon(self._style["hover"]["icon"]))
         super().enterEvent(e)
 
     def leaveEvent(self, e):
-        self.setIcon(QIcon(self._style['normal']['icon']))
+        self.setIcon(QIcon(self._style["normal"]["icon"]))
         super().leaveEvent(e)
 
     def mousePressEvent(self, e):
-        self.setIcon(QIcon(self._style['pressed']['icon']))
+        self.setIcon(QIcon(self._style["pressed"]["icon"]))
         super().mousePressEvent(e)
 
     def mouseReleaseEvent(self, e):
-        self.setIcon(QIcon(self._style['normal']['icon']))
+        self.setIcon(QIcon(self._style["normal"]["icon"]))
         super().mouseReleaseEvent(e)
 
     def paintEvent(self, e):
@@ -208,7 +208,7 @@ class CloseButton(TitleBarButton):
 
         # draw background
         style = self._style[self._state]
-        painter.setBrush(QColor(*style['background']))
+        painter.setBrush(QColor(*style["background"]))
         painter.setPen(Qt.NoPen)
         painter.drawRect(self.rect())
 

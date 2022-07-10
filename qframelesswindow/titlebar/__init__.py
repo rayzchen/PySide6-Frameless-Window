@@ -1,8 +1,8 @@
 # coding:utf-8
 import sys
 
-from PyQt5.QtCore import Qt, QEvent
-from PyQt5.QtWidgets import QHBoxLayout, QWidget
+from PySide6.QtCore import Qt, QEvent
+from PySide6.QtWidgets import QHBoxLayout, QWidget
 
 if sys.platform == "win32":
     import win32con

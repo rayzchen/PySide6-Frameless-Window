@@ -14,4 +14,4 @@ test.py
 
 dist
 build
-PyQt5_Frameless_Window.egg-info
+PySide6_Frameless_Window.egg-info

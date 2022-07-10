@@ -2,9 +2,9 @@
 from enum import Enum
 
 import xcffib as xcb
-from PyQt5 import sip
-from PyQt5.QtCore import QPointF, Qt
-from PyQt5.QtX11Extras import QX11Info
+from PySide6 import sip
+from PySide6.QtCore import QPointF, Qt
+from PySide6.QtX11Extras import QX11Info
 from xcffib.xproto import (ButtonIndex, ButtonMask, ButtonReleaseEvent,
                            ClientMessageData, ClientMessageEvent, EventMask,
                            xprotoExtension)
