@@ -4,8 +4,8 @@ from ctypes import cast
 from ctypes.wintypes import LPRECT, MSG
 from platform import platform
 
-import win32con
-import win32gui
+from win32 import win32gui
+from win32.lib import win32con
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QCloseEvent, QCursor
 from PySide6.QtWidgets import QApplication, QMainWindow

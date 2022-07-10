@@ -6,9 +6,9 @@ from PySide6.QtGui import QFont, QPainter
 from PySide6.QtWidgets import QHBoxLayout, QWidget, QMenuBar, QLabel, QStyleOption, QStyle
 
 if sys.platform == "win32":
-    import win32con
-    from win32api import SendMessage
-    from win32gui import ReleaseCapture
+    from win32.lib import win32con
+    from win32.win32api import SendMessage
+    from win32.win32gui import ReleaseCapture
 else:
     from ..utils.linux_utils import LinuxMoveResize
 

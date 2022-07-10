@@ -2,9 +2,9 @@
 from ctypes import Structure, byref, sizeof, windll
 from ctypes.wintypes import DWORD, HWND, LPARAM, RECT, UINT
 
-import win32api
-import win32con
-import win32gui
+from win32 import win32api
+from win32 import win32gui
+from win32.lib import win32con
 from PySide6.QtCore import QOperatingSystemVersion
 from PySide6.QtGui import QGuiApplication
 # from PySide6.QtWinExtras import QtWin

@@ -5,9 +5,9 @@ from ctypes import POINTER, byref, c_bool, c_int, cdll, pointer, sizeof
 from ctypes.wintypes import DWORD, LONG, LPCVOID
 from platform import platform
 
-import win32api
-import win32con
-import win32gui
+from win32 import win32api
+from win32 import win32gui
+from win32.lib import win32con
 
 from .c_structures import (ACCENT_POLICY, ACCENT_STATE, DWMNCRENDERINGPOLICY,
                            DWMWINDOWATTRIBUTE, MARGINS,
