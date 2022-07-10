@@ -8,7 +8,7 @@ import win32con
 import win32gui
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QCloseEvent, QCursor
-from PySide6.QtWidgets import QApplication, QWidget
+from PySide6.QtWidgets import QApplication, QMainWindow
 
 from ..titlebar import TitleBar
 from ..utils import win32_utils as win_utils
@@ -17,7 +17,7 @@ from .c_structures import LPNCCALCSIZE_PARAMS
 from .window_effect import WindowsWindowEffect
 
 
-class WindowsFramelessWindow(QWidget):
+class WindowsFramelessWindow(QMainWindow):
     """  Frameless window for Windows system """
 
     BORDER_WIDTH = 5
@@ -38,8 +38,11 @@ class WindowsFramelessWindow(QWidget):
         # solve issue #5
         self.windowHandle().screenChanged.connect(self.__onScreenChanged)
 
-        self.resize(500, 500)
+        self.resize(500, 532)
         self.titleBar.raise_()
+
+    def menuBar(self):
+        return self.titleBar.menuBar
 
     def setTitleBar(self, titleBar):
         """ set custom title bar
@@ -53,6 +56,10 @@ class WindowsFramelessWindow(QWidget):
         self.titleBar = titleBar
         self.titleBar.setParent(self)
         self.titleBar.raise_()
+
+    def setWindowTitle(self, name):
+        super().setWindowTitle(name)
+        self.titleBar.label.setText(name)
 
     def resizeEvent(self, e):
         super().resizeEvent(e)

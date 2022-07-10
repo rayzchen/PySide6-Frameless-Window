@@ -2,7 +2,8 @@
 import sys
 
 from PySide6.QtCore import Qt, QEvent
-from PySide6.QtWidgets import QHBoxLayout, QWidget
+from PySide6.QtGui import QFont
+from PySide6.QtWidgets import QHBoxLayout, QWidget, QMenuBar, QLabel
 
 if sys.platform == "win32":
     import win32con
@@ -19,22 +20,36 @@ class TitleBarBase(QWidget):
 
     def __init__(self, parent):
         super().__init__(parent)
-        self.minBtn = MinimizeButton(parent=self)
-        self.closeBtn = CloseButton(parent=self)
-        self.maxBtn = MaximizeButton(parent=self)
         self.hBoxLayout = QHBoxLayout(self)
+        self.hBoxLayout.setSpacing(0)
+        self.hBoxLayout.setContentsMargins(0, 0, 0, 0)
 
         self.resize(200, 32)
         self.setFixedHeight(32)
         self.setAttribute(Qt.WA_TranslucentBackground)
 
+        self.menuBar = QMenuBar(self.window())
+        self.menuBar.resize(200, 32)
+        self.menuBar.setFixedHeight(32)
+        self.menuBar.setFont(QFont("Segoe UI", 11))
+        self.menuBar.setStyleSheet("QMenuBar{padding-top: 2px; background-color: rgba(0, 0, 0, 0);}")
+        self.hBoxLayout.addWidget(self.menuBar, 0)
+
+        self.label = QLabel(self)
+        self.label.setFont(QFont("Segoe UI", 11))
+        self.label.setStyleSheet("QLabel{padding-bottom: 2px;}")
+        self.label.adjustSize()
+        self.label.setAlignment(Qt.AlignCenter)
+        self.hBoxLayout.addWidget(self.label, 1)
+
+        self.minBtn = MinimizeButton(parent=self)
+        self.closeBtn = CloseButton(parent=self)
+        self.maxBtn = MaximizeButton(parent=self)
+
         # add buttons to layout
-        self.hBoxLayout.setSpacing(0)
-        self.hBoxLayout.setContentsMargins(0, 0, 0, 0)
-        self.hBoxLayout.addWidget(self.minBtn, 0, Qt.AlignRight)
-        self.hBoxLayout.addWidget(self.maxBtn, 0, Qt.AlignRight)
-        self.hBoxLayout.addWidget(self.closeBtn, 0, Qt.AlignRight)
-        self.hBoxLayout.setAlignment(Qt.AlignRight)
+        self.hBoxLayout.addWidget(self.minBtn, 0)
+        self.hBoxLayout.addWidget(self.maxBtn, 0)
+        self.hBoxLayout.addWidget(self.closeBtn, 0)
 
         # connect signal to slot
         self.minBtn.clicked.connect(self.window().showMinimized)
@@ -50,6 +65,10 @@ class TitleBarBase(QWidget):
                 return False
 
         return super().eventFilter(obj, e)
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        self.label.move(self.width() // 2 - self.label.width() // 2, 0)
 
     def mouseDoubleClickEvent(self, event):
         """ Toggles the maximization state of the window """
@@ -67,7 +86,7 @@ class TitleBarBase(QWidget):
 
     def _isDragRegion(self, pos):
         """ Check whether the pressed point belongs to the area where dragging is allowed """
-        return 0 < pos.x() < self.width() - 46 * 3
+        return self.menuBar.width() < pos.x() < self.width() - 46 * 3
 
 
 class WindowsTitleBar(TitleBarBase):

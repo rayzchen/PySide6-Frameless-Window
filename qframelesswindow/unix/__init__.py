@@ -1,14 +1,14 @@
 # coding:utf-8
 from PySide6.QtCore import QCoreApplication, QEvent, Qt
 from PySide6.QtGui import QMouseEvent
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QMainWindow
 
 from ..titlebar import TitleBar
 from ..utils.linux_utils import LinuxMoveResize
 from .window_effect import UnixWindowEffect
 
 
-class UnixFramelessWindow(QWidget):
+class UnixFramelessWindow(QMainWindow):
     """ Frameless window for Unix system """
 
     BORDER_WIDTH = 5
@@ -40,6 +40,10 @@ class UnixFramelessWindow(QWidget):
         self.titleBar = titleBar
         self.titleBar.setParent(self)
         self.titleBar.raise_()
+
+    def setWindowTitle(self, name):
+        super().setWindowTitle(name)
+        self.titleBar.label.setText(name)
 
     def eventFilter(self, obj, event):
         et = event.type()
