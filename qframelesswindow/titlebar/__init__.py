@@ -40,6 +40,7 @@ class TitleBarBase(QWidget):
         self.label.setStyleSheet("QLabel{padding-bottom: 2px;}")
         self.label.adjustSize()
         self.label.setAlignment(Qt.AlignCenter)
+        self.label.lower()
         self.hBoxLayout.addWidget(self.label, 1)
 
         self.minBtn = MinimizeButton(parent=self)
