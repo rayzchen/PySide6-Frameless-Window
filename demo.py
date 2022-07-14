@@ -13,6 +13,7 @@ class Window(FramelessWindow):
         self.label = QLabel(self)
         self.label.setScaledContents(True)
         self.label.setPixmap(QPixmap("screenshot/shoko.png"))
+        self.setStyleSheet("background-color: white")
         self.setWindowTitle("PyQt Frameless Window")
         self.statusBar().showMessage("Hello World!")
         self.customizeTitleBar()
