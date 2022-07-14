@@ -14,8 +14,8 @@ class Window(FramelessWindow):
         self.label.setScaledContents(True)
         self.label.setPixmap(QPixmap("screenshot/shoko.png"))
         self.setWindowTitle("PyQt Frameless Window")
-
         self.statusBar().showMessage("Hello World!")
+        self.customizeTitleBar()
 
         menuBar = self.menuBar()
         fileMenu = menuBar.addMenu("File")
@@ -27,6 +27,40 @@ class Window(FramelessWindow):
         analysisMenu.addAction("Analize action")
 
         self.titleBar.raise_()
+
+    def customizeTitleBar(self):
+        normalDarkStyle = {
+            "normal": {
+                "color": (255, 255, 255, 255),
+                "background": (0, 0, 0, 0)
+            },
+            "hover": {
+                "color": (255, 255, 255),
+                "background": (0, 100, 182)
+            },
+            "pressed": {
+                "color": (255, 255, 255),
+                "background": (89, 94, 107)
+            },
+        }        
+        closeDarkStyle = {
+            "normal": {
+                "background": (0, 0, 0, 0),
+                "icon": ":/framelesswindow/close_white.svg"
+            },
+            "hover": {
+                "background": (232, 17, 35),
+                "icon": ":/framelesswindow/close_white.svg"
+            },
+            "pressed": {
+                "background": (241, 112, 122),
+                "icon": ":/framelesswindow/close_white.svg"
+            },
+        }
+        self.titleBar.minBtn.updateStyle(normalDarkStyle)
+        self.titleBar.maxBtn.updateStyle(normalDarkStyle)
+        self.titleBar.closeBtn.updateStyle(closeDarkStyle)
+        self.titleBar.setStyleSheet("background-color: #363941; color: white")
 
     def resizeEvent(self, e):
         # don't forget to call the resizeEvent() of super class
