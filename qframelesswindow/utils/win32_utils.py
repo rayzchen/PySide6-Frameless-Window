@@ -82,8 +82,9 @@ def getResizeBorderThickness(hWnd):
     if not window:
         return 0
 
+    # Removed SM_CXPADDEDBORDER because native title bar showed underneath
     result = win32api.GetSystemMetrics(
-        win32con.SM_CXSIZEFRAME) + win32api.GetSystemMetrics(92)
+        win32con.SM_CXSIZEFRAME) # + win32api.GetSystemMetrics(92)
 
     if result > 0:
         return result
