@@ -44,8 +44,8 @@ class TitleBarBase(QWidget):
         self.hBoxLayout.addWidget(self.label, 1)
 
         self.minBtn = MinimizeButton(parent=self)
-        self.closeBtn = CloseButton(parent=self)
         self.maxBtn = MaximizeButton(parent=self)
+        self.closeBtn = CloseButton(parent=self)
 
         # add buttons to layout
         self.hBoxLayout.addWidget(self.minBtn, 0)
