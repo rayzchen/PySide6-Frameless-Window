@@ -17,8 +17,10 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         "PySide6",
-        "pywin32; platform_system == 'Windows'",
-        "xcffib; platform_system != 'Windows'",
+        "pywin32;platform_system=='Windows'",
+        "xcffib;platform_system=='Linux'",
+        "pyobjc;platform_system=='Darwin'",
+        "PyCocoa;platform_system=='Darwin'",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
