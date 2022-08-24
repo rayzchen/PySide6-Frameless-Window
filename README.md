@@ -21,11 +21,11 @@ New features:
 ## Install
 To install use pip:
 ```shell
-pip install PyQt5-Frameless-Window
+pip install PySide6-Frameless-Window
 ```
 Or clone the repo:
 ```shell
-git clone https://github.com/zhiyiYo/PyQt-Frameless-Window.git
+git clone https://github.com/rayzchen/PySide6-Frameless-Window
 python setup.py install
 ```
 
@@ -43,7 +43,7 @@ To use the frameless window, you only need to inherit `FramelessWindow`. Here is
 ```python
 import sys
 
-from PyQt5.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication
 from qframelesswindow import FramelessWindow
 
 

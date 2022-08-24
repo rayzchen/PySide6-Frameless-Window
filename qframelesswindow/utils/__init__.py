@@ -38,4 +38,3 @@ def starSystemResize(window, globalPos, edges):
         window edges
     """
     MoveResize.starSystemResize(window, globalPos, edges)
->>>>>>> upstream/master

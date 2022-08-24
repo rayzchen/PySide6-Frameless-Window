@@ -14,7 +14,7 @@ class Window(FramelessWindow):
         self.label.setScaledContents(True)
         self.label.setPixmap(QPixmap("screenshot/shoko.png"))
         self.setStyleSheet("background-color: white")
-        self.setWindowTitle("PyQt Frameless Window")
+        self.setWindowTitle("PySide6 Frameless Window")
         self.statusBar().showMessage("Hello World!")
         self.customizeTitleBar()
 
@@ -43,7 +43,7 @@ class Window(FramelessWindow):
                 "color": (255, 255, 255),
                 "background": (89, 94, 107)
             },
-        }        
+        }
         closeDarkStyle = {
             "normal": {
                 "background": (0, 0, 0, 0),

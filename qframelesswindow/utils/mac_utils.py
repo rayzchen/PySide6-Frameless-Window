@@ -3,8 +3,8 @@ from ctypes import c_void_p
 
 import Cocoa
 import objc
-from PyQt5.QtCore import QT_VERSION_STR
-from PyQt5.QtWidgets import QWidget
+from PySide6.QtCore import QT_VERSION_STR
+from PySide6.QtWidgets import QWidget
 from Quartz.CoreGraphics import (CGEventCreateMouseEvent,
                                  kCGEventLeftMouseDown, kCGMouseButtonLeft)
 

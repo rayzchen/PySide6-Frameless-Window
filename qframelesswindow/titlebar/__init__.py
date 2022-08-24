@@ -2,7 +2,8 @@
 import sys
 
 from PySide6.QtCore import QEvent, Qt
-from PySide6.QtWidgets import QHBoxLayout, QWidget
+from PySide6.QtWidgets import QHBoxLayout, QWidget, QMenuBar, QLabel, QStyleOption, QStyle
+from PySide6.QtGui import QFont, QPainter
 
 from ..utils import startSystemMove
 from .title_bar_buttons import CloseButton, MaximizeButton, MinimizeButton
@@ -62,7 +63,7 @@ class TitleBar(QWidget):
 
     def paintEvent(self, event):
         self.label.move(self.width() // 2 - self.label.width() // 2, 0)
-        super(TitleBarBase, self).paintEvent(event)
+        super(TitleBar, self).paintEvent(event)
         opt = QStyleOption()
         opt.initFrom(self)
         p = QPainter(self)

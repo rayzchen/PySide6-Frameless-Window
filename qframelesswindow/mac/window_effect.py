@@ -1,7 +1,7 @@
 # coding:utf-8
 import objc
 import Cocoa
-from PyQt5.QtWidgets import QMacCocoaViewContainer
+from PySide6.QtWidgets import QMacCocoaViewContainer
 from ..utils.mac_utils import getNSWindow
 
 class MacWindowEffect:
